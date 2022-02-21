@@ -1,14 +1,29 @@
-function star(count, size){
+function star5(count, size){
+  angleMode(DEGREES)
+  for (var j = 0 ; j < count ; j++)
+  {
     x = random(1080);
-    y = random(1090);
-    for ( var i = 0; i <= count; i++ ){
-        x = random(1080);
-        y = random(1080);
-        line(x-10,y,x+10,y);
-        line(x,y-10,x,y+10);
-    }
+    y = random(1080);
+    start_angle = random(360)
+    var scribble       = new Scribble();
+    scribble.bowing    = 0.1;
+    scribble.roughness = 1.5;
+    for (var i = 0 ; i <=4 ; i++)
+      {
+        angle = i * 72 + start_angle;
+        next_angel = angle + 144 ;
+        scribble.scribbleLine(cos(angle)*size+x,sin(angle)*size+y,cos(next_angel)*size+x,sin(next_angel)*size+y);
+      }
+  }
+}      
 
-}
+function moon(size){
+    x = random(1080);
+    y = random(1080);
+    var scribble       = new Scribble();
+    scribble.scribbleEllipse( x, y, size, size );
+}      
+
 function setup() {
     createCanvas( windowWidth = 1080, windowHeight = 1080 );
     background( 230 );
@@ -27,23 +42,27 @@ function setup() {
         line(grid_width*i, 0, grid_width*i, 1080);
         line(0, grid_height * i , 1080, grid_height * i);
     }
-    strokeWeight( 20 );
 
-    var xCoords = [ 100, 200, 800, 900, 500 ];
-    var yCoords = [ 100, 800, 800, 600, 100 ];
+    strokeWeight( 5 );
+    var xCoords = [ 150, 120, 400, 400, 600, 600, 1082-120,  1080-150 ];
+    var yCoords = [ 1080, 900, 850, 700, 700, 850, 900, 1080 ];
     stroke( 255,0,0 );
-
-    scribble.scribbleFilling( xCoords, yCoords , 20, 315 )
+    scribble.scribbleFilling( xCoords, yCoords , 10, 315 )
     stroke( 128,64,0 );
     strokeWeight( 1 );
-    scribble.scribbleCurve( 100, 600, 1000, 600, 400, 500, 600, 500 );
+    noFill();
+    scribble.scribbleCurve( 0, 600, 1080, 600, 400, 500, 600, 500 );
     stroke( 0,0,255 );
-    scribble.scribbleCurve( 540, 200, 540, 900, 0, 100, 200, 600 );
 
-    scribble.scribbleEllipse( 200, 200, 150, 150 );
-    scribble.scribbleEllipse( 200, 200, 110, 110 );
 
-    star(10);
+
+    //star(1,1);
+    star5(100,10);
+    star5(50,15);
+    star5(20,20);
+    star5(10,25);
+
+    moon(200);
 
     // draw every value as a filled rect in a bar graph
   /*  for ( var i = 0; i < values.length; i++ ) {
@@ -89,6 +108,8 @@ function setup() {
       scribble.scribbleFilling( xCoords, yCoords , gap*2, angle );
 
     }*/
-  }
+}
 
-  function draw() {}
+function draw() {
+
+}
