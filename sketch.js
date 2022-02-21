@@ -42,12 +42,18 @@ function setup() {
         line(grid_width*i, 0, grid_width*i, 1080);
         line(0, grid_height * i , 1080, grid_height * i);
     }
+    star5(100,10);
+    star5(50,15);
+    star5(20,20);
+    star5(10,25);
 
+    moon(200);
+    
     strokeWeight( 5 );
-    var xCoords = [ 150, 120, 400, 400, 600, 600, 1082-120,  1080-150 ];
+    var xCoords = [ 150, 120, 400, 400, 1082-400, 1082-400, 1082-120,  1080-150 ];
     var yCoords = [ 1080, 900, 850, 700, 700, 850, 900, 1080 ];
     stroke( 255,0,0 );
-    scribble.scribbleFilling( xCoords, yCoords , 10, 315 )
+    scribble.scribbleFilling( xCoords, yCoords , 10,285 )
     stroke( 128,64,0 );
     strokeWeight( 1 );
     noFill();
@@ -57,12 +63,7 @@ function setup() {
 
 
     //star(1,1);
-    star5(100,10);
-    star5(50,15);
-    star5(20,20);
-    star5(10,25);
-
-    moon(200);
+    
 
     // draw every value as a filled rect in a bar graph
   /*  for ( var i = 0; i < values.length; i++ ) {
