@@ -55,9 +55,17 @@ function setup() {
     stroke( 255,0,0 );
     scribble.scribbleFilling( xCoords, yCoords , 10,285 )
     stroke( 128,64,0 );
-    strokeWeight( 5 );
+    strokeWeight( 1 );
     noFill();
     scribble.scribbleCurve( 0, 600, 1080, 600, 400, 500, 600, 500 );
+    stroke( 128,64,0 );
+    strokeWeight( 1 );
+    noFill();
+    scribble.scribbleCurve( 1, 600, 1079, 600, 400, 500, 600, 500 );
+    stroke( 128,64,0 );
+    strokeWeight( 1 );
+    noFill();
+    scribble.scribbleCurve( 2, 600, 1078, 600, 400, 500, 600, 500 );
     stroke( 0,0,255 );
 
 
