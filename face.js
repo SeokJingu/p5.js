@@ -30,9 +30,11 @@ function face(style){
   var scribble = new Scribble();
   if (style == "egg"){
     noFill();
-    strokeWeight( 5 );
-    scribble.scribbleEllipse(x,y, 500, 600)
-    scribble.scribbleEllipse(x,y, 500, 600)
+    strokeWeight( 1 );
+    scribble.scribbleEllipse(x,y, 500-1, 600+1)
+    scribble.scribbleEllipse(x,y, 500-1, 600-1)
+    scribble.scribbleEllipse(x,y, 500+1, 600+1)
+    scribble.scribbleEllipse(x,y, 500+1, 600-1)
   }
 }
 
@@ -40,10 +42,19 @@ function right_eye(style){
   x = 648;
   y = 432;
   var scribble = new Scribble();
-  noFill();
-  strokeWeight( 5 );
-  scribble.scribbleEllipse(x,y, 20, 20)
-  scribble.scribbleEllipse(x,y, 80, 40)
+  if (style == 0){
+    noFill();
+    strokeWeight( 5 );
+    scribble.scribbleEllipse(x,y, 20, 20)
+    scribble.scribbleEllipse(x,y, 80, 40)
+  }
+  else if (style == 1){
+    noFill();
+    strokeWeight( 5 );
+    scribble.scribbleCurve( x-40,y-20,x+40, y-20, x-20,y-30, x+20,y-30 );
+    scribble.scribbleEllipse(x,y, 20, 20)
+    
+  }
 }
 
 function left_eye(style){
@@ -92,11 +103,9 @@ function setup() {
         line(0, grid_height * i , 1080, grid_height * i);
     }
     face("egg");
-    right_eye();
+    right_eye(1);
     left_eye();
     hair();
-    
-  
 }
 
 
