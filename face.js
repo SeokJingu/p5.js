@@ -28,17 +28,10 @@ function heart(x,y,angle,size){
   strokeWeight( size / 20 );
   angleMode(DEGREES);
   rotate(angle);
-  scribble.scribbleCurve(x_1-size/40, y_1, x_1-size/40, y_2, x_1+size*1.5, y_1-size*1.2, x_1+size*1.2, y_2-size/2);
-  scribble.scribbleCurve(x_1+size/40, y_1, x_1+size/40, y_2, x_1-size*1.5, y_1-size*1.2, x_1-size*1.2, y_2-size/2);
+  scribble.scribbleCurve(x_1-size/40, y_1, x_1-size/40, y_2, x_1+size*1.5, y_1-size*1.2, x_1+size*1.5, y_2-size/2);
+  scribble.scribbleCurve(x_1+size/40, y_1, x_1+size/40, y_2, x_1-size*1.5, y_1-size*1.2, x_1-size*1.5, y_2-size/2);
 }
-
-
-function moon(size){
-    x = random(1080);
-    y = random(1080);
-    var scribble       = new Scribble();
-    scribble.scribbleEllipse( x, y, size, size );
-}      
+  
 
 function face(style){
   x = 1080 / 2;
@@ -99,33 +92,82 @@ function hair(style){
 
 }
 
-
-function setup() {
-    createCanvas( windowWidth = 1080, windowHeight = 1080 );
-    background( 230 );
+function grid(CanvasWidth, CanvasHight, count){
+  background( 230 );
     stroke( 0 );
     strokeWeight( 0.1 );
 
-    var scribble       = new Scribble();
-    scribble.bowing    = 2;
-    scribble.roughness = 3;
-
-    var grid_count = 10;
-    var grid_width = windowWidth / grid_count + 1;
-    var grid_height = windowHeight / grid_count + 1;
+    var grid_count = count;
+    var grid_width = (CanvasWidth-1) / (grid_count + 1);
+    var grid_height = (CanvasHight-1) / (grid_count + 1);
 
     for ( var i = 0; i <= grid_count; i++ ){
-        line(grid_width*i, 0, grid_width*i, 1080);
-        line(0, grid_height * i , 1080, grid_height * i);
+        line(grid_width*i, 0, grid_width*i, CanvasHight);
+        line(0, grid_height * i , CanvasWidth, grid_height * i);
     }
-    star5(10,10);
-    face("egg");
-    right_eye(1);
-    left_eye();
-    hair();
-    random(255)
-    for (var i = 0 ; i <=10000 ; i++){
-      heart(random(2000),random(2000), random(360), random(30));
+}
+
+function leaf(x,y,angle,size){
+  x_1 = x;
+  y_1 = y - size /2;
+  y_2 = y + size;
+  var scribble = new Scribble();
+  fill(random(255),random(255),random(255));
+  strokeWeight( size / 20 );
+  angleMode(DEGREES);
+  rotate(angle);
+  scribble.scribbleCurve(x_1, y_1, x_1, y_2, x_1+size/1.5, y_1+size/10, x_1+size/2, y_2-size/2);
+  scribble.scribbleCurve(x_1, y_1, x_1, y_2, x_1-size/1.5, y_1+size/10, x_1-size/2, y_2-size/2);
+  scribble.scribbleLine(x, y - size/1.5 , x_1, y_2);
+  scribble.scribbleLine(x, y - size/5   , x+size/2.5, y-size/50);
+  scribble.scribbleLine(x, y + size/5   , x-size/3, y+size/2);
+  scribble.scribbleLine(x, y + size/1.5 , x+size/5, y+size/1.3);
+}
+
+function camera(x,y,angle,size){
+  var scribble = new Scribble();
+  scribble.scribbleRect(x,y,100,200);
+}
+
+function center(CanvasWidth, CanvasHight){
+  background( 230 );
+    stroke( 0 );
+    strokeWeight( 0.1 );
+    line(CanvasWidth /2, 0, CanvasWidth /2, CanvasHight);
+    line(0,CanvasHight/2,CanvasWidth,CanvasHight/2);
+}
+
+
+
+function moon(size){
+  x = random(1080);
+  y = random(1080);
+  var scribble       = new Scribble();
+  fill(random(255),random(255),random(255));
+  strokeWeight( size / 20 );
+  scribble.scribbleEllipse( x, y, size, size );
+  fill(random(255),random(255),random(255));
+  scribble.scribbleRoundedRect(1000,1000,size*1.5,size,5);
+}    
+
+function setup() {
+    createCanvas( windowWidth = 1080, windowHeight = 1080 );
+
+    var test = 1;
+
+    if (test == 1){
+      grid(windowWidth, windowHeight, 11);
+      center(windowWidth, windowHeight);
+      camera(windowWidth/2,windowWidth/2, 10, 100);
+      moon(100);
+      
+    }
+
+    if (test == 0){
+      for (var i = 0 ; i <=15000 ; i++){
+        heart(random(2000),random(2000), random(359), random(40));  
+        leaf(random(2000),random(2000), random(359), random(50));
+      }
     }
 }
 
