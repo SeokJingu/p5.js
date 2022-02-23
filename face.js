@@ -12,10 +12,26 @@ function star5(count, size){
       {
         angle = i * 72 + start_angle;
         next_angel = angle + 144 ;
+        fill(random(255));
+        strokeWeight( 1 );
         scribble.scribbleLine(cos(angle)*size+x,sin(angle)*size+y,cos(next_angel)*size+x,sin(next_angel)*size+y);
       }
   }
-}      
+}
+
+function heart(x,y,angle,size){
+  x_1 = x;
+  y_1 = y - size /2;
+  y_2 = y + size;
+  var scribble = new Scribble();
+  fill(random(255),random(255),random(255));
+  strokeWeight( size / 20 );
+  angleMode(DEGREES);
+  rotate(angle);
+  scribble.scribbleCurve(x_1-size/40, y_1, x_1-size/40, y_2, x_1+size*1.5, y_1-size*1.2, x_1+size*1.2, y_2-size/2);
+  scribble.scribbleCurve(x_1+size/40, y_1, x_1+size/40, y_2, x_1-size*1.5, y_1-size*1.2, x_1-size*1.2, y_2-size/2);
+}
+
 
 function moon(size){
     x = random(1080);
@@ -102,10 +118,15 @@ function setup() {
         line(grid_width*i, 0, grid_width*i, 1080);
         line(0, grid_height * i , 1080, grid_height * i);
     }
+    star5(10,10);
     face("egg");
     right_eye(1);
     left_eye();
     hair();
+    random(255)
+    for (var i = 0 ; i <=10000 ; i++){
+      heart(random(2000),random(2000), random(360), random(30));
+    }
 }
 
 
