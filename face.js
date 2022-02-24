@@ -228,6 +228,11 @@ function star(x,y,angle, size){
   stroke( random(255),random(255),random(255) );
   var gap = size/500;
   scribble.scribbleFilling( xCoords, yCoords, gap, 315 );
+  for (var i = 0 ; i <= 358 ; i++){
+    stroke('black');
+    strokeWeight(3)
+    line(xCoords[i],yCoords[i],xCoords[i+1],yCoords[i+1],)
+  }
   rotate(-angle);
   translate(-x, -y);
 }
@@ -249,9 +254,9 @@ function heart_2nd(x,y,angle, size){
   }
   translate(x, y);
   rotate(angle);
-  strokeWeight( size / 1000 );
+  strokeWeight( size / 100 );
   stroke( random(255),random(255),random(255) );
-  var gap = size/ 500;
+  var gap = size / 1000;
   scribble.scribbleFilling( xCoords, yCoords, gap, random(360) );
   for (var i = 0 ; i <= 359 ; i++){
     stroke('black');
@@ -262,12 +267,51 @@ function heart_2nd(x,y,angle, size){
   translate(-x, -y);
 }
 
+function star_2(x,y,angle, size){
+  var scribble       = new Scribble();
+  var xCoords = [];
+  var yCoords = [];
+  angleMode(DEGREES)
+  for (var i = 0 ; i <= 56 ; i++){
+    j = i-28;
+    xCoords[i] = ((5*cos(2*j))+(2*cos(3*j)))*size/10;
+    yCoords[i] = ((2*sin(3*j))-(5*sin(2*j)))*size/10;
+    j = i-(172);
+    xCoords[i+56] = ((5*cos(2*j))+(2*cos(3*j)))*size/10;
+    yCoords[i+56] = ((2*sin(3*j))-(5*sin(2*j)))*size/10;
+    j = i-(316);
+    xCoords[i+56*2] = ((5*cos(2*j))+(2*cos(3*j)))*size/10;
+    yCoords[i+56*2] = ((2*sin(3*j))-(5*sin(2*j)))*size/10;
+    j = i-(460);
+    xCoords[i+56*3] = ((5*cos(2*j))+(2*cos(3*j)))*size/10;
+    yCoords[i+56*3] = ((2*sin(3*j))-(5*sin(2*j)))*size/10;
+    j = i-(604);
+    xCoords[i+56*4] = ((5*cos(2*j))+(2*cos(3*j)))*size/10;
+    yCoords[i+56*4] = ((2*sin(3*j))-(5*sin(2*j)))*size/10;
+
+  }
+  translate(x, y);
+  rotate(angle);
+  strokeWeight( size / 1000 );
+  stroke( random(255),random(255),random(255) );
+  var gap = size/500;
+  scribble.scribbleFilling( xCoords, yCoords, gap, 315 );
+  for (var i = 0 ; i <= 358 ; i++){
+    stroke('black');
+    strokeWeight(3)
+    line(xCoords[i],yCoords[i],xCoords[i+1],yCoords[i+1],)
+  }
+  rotate(-angle);
+  translate(-x, -y);
+
+}
+
 function setup() {
     createCanvas( windowWidth = 1080, windowHeight = 1080 );
-    for (var i = 0 ; i <= 5000 ; i++){
+    for (var i = 0 ; i <= 1000 ; i++){
       //circle_img(random(1080),random(1080), random(360), random(100));
       //ufo(random(1080),random(1080), random(360), random(100));
-      //star(random(1080),random(1080),random(360),random(100));
+      star_2(random(1080),random(1080),random(360),random(20)+20);
       heart_2nd(random(1080),random(1080),random(360),random(20)+20)
     }
 }
