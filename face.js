@@ -314,19 +314,19 @@ function star_2(x,y,angle, size, bright, last){
   translate(x, y);
   rotate(angle);
   if (last == "loop"){
-    strokeWeight( size / 50 );
-    var gap = size/25;
+    strokeWeight( size / 1000 );
+    var gap = size / 750;
     outline_strokeWeight = 1;
     outline_color = 0
   }
   else if (last == "last"){
     strokeWeight( size / 1000 );
-    var gap = size / 600;
+    var gap = size / 60;
     outline_strokeWeight = 1;
     outline_color = 70
   }
-  stroke( random(255-bright)+bright,random(255-bright)+bright,random(255-bright)+bright);
-  scribble.scribbleFilling( xCoords, yCoords, gap, 315 );
+  stroke(random(255),random(255),random(255));
+  scribble.scribbleFilling( xCoords, yCoords, gap, random(45) );
   //scribble.scribbleFilling( xCoords, yCoords, gap, 315-120 );
   // for (var i = 0 ; i <= 358 ; i++){
   //   stroke(outline_color); 
@@ -356,13 +356,13 @@ function heart_3rd(x,y,angle, size,bright,last){
 
   if (last == "loop"){
     strokeWeight( size / 50 );
-    var gap = size/25;
+    var gap = size /25;
     outline_strokeWeight = 1;
     outline_color = 0
   }
   else if (last == "last"){
-    strokeWeight( size / 1000 );
-    var gap = size / 600;
+    strokeWeight( size / 2000 );
+    var gap = size / 2000;
     outline_strokeWeight = 1;
     outline_color = 255
   }
@@ -452,10 +452,10 @@ function draw() {
     if (test == 0){
       var c = createCanvas( windowWidth = 1080, windowHeight = 1080 );
       background(255, 255, 255);
-      for (var i = 0 ; i <= 6000 ; i++){
+      for (var i = 0 ; i <= 600 ; i++){
         var loop = "loop";
         star_2(random(1080),random(1080),random(360),random(250), 128, loop);
-      }
+        }
       }
 
     if (test == 2){
